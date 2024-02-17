@@ -36,8 +36,8 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.bumba.cingami.app.presentation.component.AnimatedButton
 import com.bumba.cingami.app.presentation.component.CurrencyText
 import com.bumba.cingami.app.presentation.convert.ConvertScreen
-import com.bumba.cingami.app.presentation.util.toNumberFormatted
-import com.bumba.cingami.app.presentation.util.toRealNumber
+import com.bumba.cingami.app.core.util.toNumberFormatted
+import com.bumba.cingami.app.core.util.toRealNumber
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

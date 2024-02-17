@@ -28,12 +28,12 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.bumba.cingami.app.domain.util.currentByCode
+import com.bumba.cingami.app.core.util.currentByCode
 import com.bumba.cingami.app.presentation.component.ProgressButton
 import com.bumba.cingami.app.presentation.component.SelectCurrencySection
 import com.bumba.cingami.app.presentation.component.TextFieldWithLabelAbove
-import com.bumba.cingami.app.presentation.util.formatNumber
-import com.bumba.cingami.app.presentation.util.toCurrencyRate
+import com.bumba.cingami.app.core.util.formatNumber
+import com.bumba.cingami.app.core.util.toCurrencyRate
 import org.koin.compose.rememberKoinInject
 
 object SettingsScreen : Screen {

@@ -3,8 +3,8 @@ package com.bumba.cingami.app.presentation.settings
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
 import com.bumba.cingami.app.domain.repository.SettingsRepository
-import com.bumba.cingami.app.domain.util.Currency
-import com.bumba.cingami.app.presentation.util.toRealNumber
+import com.bumba.cingami.app.core.util.Currency
+import com.bumba.cingami.app.core.util.toRealNumber
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

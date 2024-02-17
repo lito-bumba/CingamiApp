@@ -40,16 +40,14 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.bumba.cingami.app.domain.util.currentByCode
+import com.bumba.cingami.app.core.util.currentByCode
+import com.bumba.cingami.app.core.util.formatNumber
 import com.bumba.cingami.app.presentation.amount_screen.AmountScreen
 import com.bumba.cingami.app.presentation.component.AmountTextView
 import com.bumba.cingami.app.presentation.component.CurrencyText
 import com.bumba.cingami.app.presentation.component.SelectCurrencySection
 import com.bumba.cingami.app.presentation.settings.SettingsScreen
-import com.bumba.cingami.app.presentation.util.formatNumber
 import org.koin.compose.rememberKoinInject
-
-private val containerColor = Color(0xFF5643C9)
 
 data class ConvertScreen(
     val currency: String = "",
@@ -87,7 +85,7 @@ data class ConvertScreen(
                 FloatingActionButton(
                     onClick = { screenModel.onEvent(ConvertEvent.ShareData) },
                     shape = RoundedCornerShape(16.dp),
-                    containerColor = containerColor,
+                    containerColor = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.size(70.dp)
                 ) {
                     Icon(
@@ -101,7 +99,7 @@ data class ConvertScreen(
                 }
             },
             floatingActionButtonPosition = FabPosition.Center,
-            containerColor = containerColor
+            containerColor = MaterialTheme.colorScheme.primary
         ) {
             Column(
                 modifier = Modifier
@@ -137,7 +135,7 @@ data class ConvertScreen(
                         colors = CheckboxDefaults.colors(
                             checkedColor = Color.White,
                             uncheckedColor = Color.White,
-                            checkmarkColor = containerColor
+                            checkmarkColor = MaterialTheme.colorScheme.primary
                         )
                     )
                     Text(
