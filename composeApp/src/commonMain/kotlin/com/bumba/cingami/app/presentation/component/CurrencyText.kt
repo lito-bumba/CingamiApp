@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 fun CurrencyText(
     code: String, amount: String,
     textAlign: TextAlign= TextAlign.Center,
-    color: Color = Color.Black,
+    color: Color = MaterialTheme.colorScheme.primary,
     modifier: Modifier = Modifier.fillMaxWidth()
 ) {
     Text(
