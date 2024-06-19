@@ -1,6 +1,6 @@
 package com.bumba.cingami.app.data.repository
 
-import com.bumba.cingami.app.data.util.PreferenceManager
+import com.bumba.cingami.app.core.data.PreferenceManager
 import com.bumba.cingami.app.domain.repository.SettingsRepository
 
 class SettingsRepositoryImpl(

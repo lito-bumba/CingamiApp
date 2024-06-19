@@ -28,8 +28,7 @@ fun AmountTextView(
         Text(
             text = "$text:",
             style = MaterialTheme.typography.bodyMedium,
-            textAlign = TextAlign.Start,
-            color = Color.Black
+            textAlign = TextAlign.Start
         )
         Text(
             text = buildAnnotatedString {

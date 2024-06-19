@@ -33,11 +33,11 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.bumba.cingami.app.core.util.toNumberFormatted
+import com.bumba.cingami.app.core.util.toRealNumber
 import com.bumba.cingami.app.presentation.component.AnimatedButton
 import com.bumba.cingami.app.presentation.component.CurrencyText
 import com.bumba.cingami.app.presentation.convert.ConvertScreen
-import com.bumba.cingami.app.presentation.util.toNumberFormatted
-import com.bumba.cingami.app.presentation.util.toRealNumber
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -76,7 +76,7 @@ data class AmountScreen(
             ) {
                 Spacer(modifier = Modifier.height(32.dp))
                 CurrencyText(
-                    code = currency,
+                    code = "",
                     amount = fromAmount,
                     textAlign = TextAlign.End
                 )

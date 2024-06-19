@@ -1,6 +1,6 @@
 package com.bumba.cingami.app.presentation.settings
 
-import com.bumba.cingami.app.domain.util.Currency
+import com.bumba.cingami.app.core.util.Currency
 
 data class SettingsState(
     val currencyCode: String = Currency.KWANZA.code,

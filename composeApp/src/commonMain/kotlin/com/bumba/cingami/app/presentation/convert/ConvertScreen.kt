@@ -2,6 +2,7 @@ package com.bumba.cingami.app.presentation.convert
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -40,16 +41,15 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.bumba.cingami.app.domain.util.currentByCode
+import com.bumba.cingami.app.core.platform.Platform
+import com.bumba.cingami.app.core.util.currentByCode
+import com.bumba.cingami.app.core.util.formatNumber
 import com.bumba.cingami.app.presentation.amount_screen.AmountScreen
 import com.bumba.cingami.app.presentation.component.AmountTextView
 import com.bumba.cingami.app.presentation.component.CurrencyText
 import com.bumba.cingami.app.presentation.component.SelectCurrencySection
 import com.bumba.cingami.app.presentation.settings.SettingsScreen
-import com.bumba.cingami.app.presentation.util.formatNumber
 import org.koin.compose.rememberKoinInject
-
-private val containerColor = Color(0xFF5643C9)
 
 data class ConvertScreen(
     val currency: String = "",
@@ -60,6 +60,7 @@ data class ConvertScreen(
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val screenModel = rememberKoinInject<ConvertScreenModel>()
+        val currentPlatform = rememberKoinInject<Platform>()
         val state by screenModel.state.collectAsState()
 
         LaunchedEffect(Unit) {
@@ -87,7 +88,7 @@ data class ConvertScreen(
                 FloatingActionButton(
                     onClick = { screenModel.onEvent(ConvertEvent.ShareData) },
                     shape = RoundedCornerShape(16.dp),
-                    containerColor = containerColor,
+                    containerColor = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.size(70.dp)
                 ) {
                     Icon(
@@ -101,14 +102,13 @@ data class ConvertScreen(
                 }
             },
             floatingActionButtonPosition = FabPosition.Center,
-            containerColor = containerColor
+            containerColor = MaterialTheme.colorScheme.primary
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(paddingValues = it)
+                    .padding(top = it.calculateTopPadding())
             ) {
-                Spacer(modifier = Modifier.height(16.dp))
                 CurrencyText(
                     code = state.fromCurrency,
                     amount = state.amountScreen,
@@ -123,8 +123,8 @@ data class ConvertScreen(
                                 )
                             )
                         }
+                        .padding(16.dp)
                 )
-                Spacer(modifier = Modifier.height(8.dp))
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.padding(horizontal = 16.dp)
@@ -137,7 +137,7 @@ data class ConvertScreen(
                         colors = CheckboxDefaults.colors(
                             checkedColor = Color.White,
                             uncheckedColor = Color.White,
-                            checkmarkColor = containerColor
+                            checkmarkColor = MaterialTheme.colorScheme.primary
                         )
                     )
                     Text(
@@ -251,18 +251,24 @@ data class ConvertScreen(
         modifier: Modifier,
         onClick: () -> Unit
     ) {
+        val platform = rememberKoinInject<Platform>()
         Row(
             verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = if (platform != Platform.IOS) Arrangement.SpaceBetween else Arrangement.End,
             modifier = modifier
         ) {
-            Text(
-                text = "Cingami App",
-                fontWeight = FontWeight.Bold,
-                style = MaterialTheme.typography.headlineSmall,
-                color = Color.White,
-                modifier = Modifier.weight(1f)
-            )
-            IconButton(onClick = onClick) {
+            if (platform != Platform.IOS) {
+                Text(
+                    text = "Cingami App",
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = Color.White
+                )
+            }
+            IconButton(
+                onClick = onClick,
+                modifier = Modifier.padding(top = (if (platform == Platform.IOS) 24 else 0).dp)
+            ) {
                 Icon(
                     imageVector = Icons.Filled.Settings,
                     contentDescription = "Settings",
