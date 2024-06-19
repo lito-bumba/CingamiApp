@@ -46,13 +46,13 @@ object SettingsScreen : Screen {
         val focusManager = LocalFocusManager.current
         val snackBarHostState = remember { SnackbarHostState() }
 
-
-
         Scaffold(
             topBar = {
                 IconButton(
                     onClick = { navigator.popUntilRoot() },
-                    modifier = Modifier.padding(16.dp)
+                    modifier = Modifier
+                        .padding(16.dp)
+                        .padding(top = 24.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.ArrowBackIos,

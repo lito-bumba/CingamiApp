@@ -1,5 +1,6 @@
 package com.bumba.cingami.app.presentation
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.Navigator
 import com.bumba.cingami.app.core.presentation.AppTheme
